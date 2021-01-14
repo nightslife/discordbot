@@ -1,18 +1,18 @@
 const Discord = require('discord.js');
-const config = require("./config.json")
+// const config = require("./config.json")
 const client = new Discord.Client();
 
-const clientBotId = config.BOT_TOKEN
+const clientBotId = process.env.BOT_TOKEN
 const applicationMessagedeleteTime = 1;
 
-let forwardOfficerID = config.officerID;
+let forwardOfficerID = process.env.officerID;
 
 function pasteToOfficer(message) {
     let user = message.member.user;
     if(message.member.roles.cache.find(role => role.name === 'Officer')){
         return
     }
-    let officerChannel = message.guild.channels.cache.find(ch => ch.name === config.application_channel)
+    let officerChannel = message.guild.channels.cache.find(ch => ch.name === process.env.application_channel)
     let officerRole = message.channel.guild.roles.cache.find(role => role.name === 'Officer');
     const embed = new Discord.MessageEmbed()
         .setTitle(`${user.username}#${user.discriminator}`)
@@ -44,7 +44,7 @@ client.on('ready', () => {
 client.on('message', message => {
     if (!message.channel) return;
     // console.log(message)
-    if (message.channel.id === config.applicationChannelID) pasteToOfficer(message)
+    if (message.channel.id === process.env.applicationChannelID) pasteToOfficer(message)
     if (message.channel.type === 'dm') relayDMs(message)
 });
 
