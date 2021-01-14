@@ -9,11 +9,11 @@ let forwardOfficerID = process.env.officerID;
 
 function pasteToOfficer(message) {
     let user = message.member.user;
-    if(message.member.roles.cache.find(role => role.name === 'Officer')){
+    if(message.member.roles.cache.find(role => role.name === 'officers')){
         return
     }
     let officerChannel = message.guild.channels.cache.find(ch => ch.name === process.env.application_channel)
-    let officerRole = message.channel.guild.roles.cache.find(role => role.name === 'Officer');
+    let officerRole = message.channel.guild.roles.cache.find(role => role.name === 'officers');
     const embed = new Discord.MessageEmbed()
         .setTitle(`${user.username}#${user.discriminator}`)
         .setDescription(message.content);
