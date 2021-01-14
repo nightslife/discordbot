@@ -19,9 +19,7 @@ function pasteToOfficer(message) {
         .setDescription(message.content);
     officerChannel.send("<@&"+officerRole.id+"> New Recruit",{embed:embed})
     user.createDM().then((channel) => {
-        channel.send(`Hello ${user.username}. Thank you for your interest in joining Delusions of Grandeur - Zul'Jin. Your application has been moved to the review channel and the officers have been notified. 
-        Below is a copy of the application that was sent. If you wish to edit, update, or just want to reach out to the officers, please reply to me instead of submitting another message in our discord. Thank you again 
-        for your interest and good luck.`);
+        channel.send(`Hello ${user.username}. Thank you for your interest in joining Delusions of Grandeur - Zul'Jin. Your application has been moved to the review channel and the officers have been notified. Below is a copy of the application that was sent. If you wish to edit, update, or just want to reach out to the officers, please reply to me instead of submitting another message in our discord. Thank you again for your interest and good luck.`);
         channel.send({embed: embed});
     }).catch((err) =>{
         console.log(err)
